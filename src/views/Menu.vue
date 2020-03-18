@@ -1,12 +1,17 @@
 <template>
   <div class="menu">
+    <p>{{menu}}</p>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+
 
 export default {
- 
+  computed: {
+    menu() {
+      return this.$store.state.menu
+    }
+  },
 }
 </script>
