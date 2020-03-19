@@ -1,29 +1,31 @@
 <template>
   <div class="menu">
+    <LoadingScreen />
     <header>
       <CartButton @click.native="toggleCart" />
     </header>
     <main>
       <Cart v-if="cart"/>
     </main>
-    
   </div>
 </template>
 
 <script>
+
 import CartButton from '@/components/CartButton'
 import Cart from '@/components/Cart'
+import LoadingScreen from "@/components/LoadingScreen.vue";
 
 export default {
   data: () => {return{
     cart: false
   }},
   components: {
-    CartButton, Cart
+    CartButton, Cart, LoadingScreen
   },
   computed: {
     menu() {
-      return this.$store.state.menu
+      return this.$store.state.menu;
     }
   },
   methods: {
@@ -32,6 +34,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <style lang="scss" scoped>
