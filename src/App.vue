@@ -25,7 +25,7 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
   color: #2c3e50;
-  max-width: 375px;
+  max-width: 500px;
   min-height: 812px;
   border: 1px solid black;
   margin: 0 auto;
