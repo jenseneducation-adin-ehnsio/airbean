@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
   created() {
-    this.$store.dispatch('fetchMenu')
+    this.$store.dispatch("fetchMenu");
   }
-}
+};
 </script>
 
 <style lang="scss">
@@ -25,7 +25,7 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
   color: #2c3e50;
-  max-width: 375px;
+  max-width: 500px;
   min-height: 812px;
   border: 1px solid black;
   margin: 0 auto;
