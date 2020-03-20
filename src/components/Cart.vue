@@ -37,13 +37,13 @@ export default {
 
 <style lang="scss" scoped>
     .cart {
-        position: relative;
+        position: absolute;
+        z-index: 99;
         width: 90%;
         min-height: 300px;
-        margin: 0 auto;
+        right: 25px;
         background-color: #fff;
         border-radius: 5px;
-        margin-top: -20px;
         padding: 1px 20px 20px 20px;
         button {
             cursor: pointer;

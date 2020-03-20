@@ -48,7 +48,7 @@ export default {
     box-sizing: content-box;
     background-color: #2c3e50;
     border: 10px solid #2c3e50;
-    border-radius: 25px;
+    border-radius: 50%;
     &:hover {
         cursor: pointer;
     }

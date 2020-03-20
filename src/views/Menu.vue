@@ -1,7 +1,8 @@
 <template>
   <div class="menu">
-    <LoadingScreen />
+    <LoadingScreen v-show="false"/>
     <header>
+
       <NavButton v-bind:showNav="navVisible" v-on:navOpen="openNav" />
       <CartButton @click.native="toggleCart" />
     </header>
@@ -10,20 +11,22 @@
 
     <main>
       <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
+
       <Cart v-if="cart" />
+    <main>
+      <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
+      <MenuList />
     </main>
   </div>
 </template>
 
 <script>
-import LoadingScreen from "@/components/LoadingScreen";
 import NavButton from "@/components/NavButton";
 import Nav from "@/components/Nav";
-
-import CartButton from "@/components/CartButton";
-import Cart from "@/components/Cart";
-
-import MenuList from "@/components/MenuList.vue";
+import CartButton from '@/components/CartButton'
+import Cart from '@/components/Cart'
+import LoadingScreen from '@/components/LoadingScreen.vue'
+import MenuList from '@/components/MenuList.vue'
 
 export default {
   components: {
@@ -61,6 +64,7 @@ export default {
 
 <style lang="scss" scoped>
 .menu {
+  position: relative;
   background-color: pink;
   min-height: 810px;
   width: 100%;
@@ -70,7 +74,6 @@ header {
   display: flex;
   width: 100%;
   height: 120px;
-  justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
 }
 </style>
