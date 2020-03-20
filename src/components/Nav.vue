@@ -1,9 +1,7 @@
 <template>
   <div class="nav" :class="{ close: showNav }">
-
     <button @click="emitVisible">
-      <img src="../assets/close.svg"  />
-
+    <img src="../assets/close.svg"  />
     </button>
     <router-link to="/" class="link">Meny</router-link>
     <hr />

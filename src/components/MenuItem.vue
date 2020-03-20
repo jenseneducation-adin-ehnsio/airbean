@@ -1,6 +1,12 @@
 <template>
     <div class="menu-item">
-        <img class="add-button" src="@/assets/add.svg" alt="" height="25px" width="25px">
+        <img class="add-button" 
+        src="@/assets/add.svg" 
+        alt="Add Item"
+        height="25px"
+        width="25px"
+        @click="addItem"
+        >
         <header class="menu-item-header">
             <h2> {{item.title}} 
                 <p class="item-desc"> {{item.desc}} </p>
@@ -17,6 +23,11 @@
 export default {
     props: {
         item: Object
+    },
+    methods: {
+        addItem(){
+            this.$store.dispatch('addItem', this.item)
+        }
     }
 }
 </script>
@@ -44,13 +55,16 @@ export default {
         }
     }
 }
+
 .add-button {
     box-sizing: content-box;
     background-color: #2c3e50;
     border: 10px solid #2c3e50;
     border-radius: 50%;
-    &:hover {
-        cursor: pointer;
-    }
+        &:hover {
+            cursor: pointer;
+        }
 }
+
+
 </style>

@@ -7,6 +7,7 @@
     </header>
 
     <Cart v-if="cart" />
+
     <main>
       <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
       <MenuList />
@@ -34,7 +35,7 @@ export default {
   data: () => {
     return {
       cart: false,
-      navVisible: false
+      navVisible: true
     };
   },
   computed: {
@@ -60,7 +61,6 @@ export default {
 <style lang="scss" scoped>
 .menu {
   position: relative;
-  background-color: pink;
   min-height: 810px;
   width: 100%;
   padding-bottom: 20px;
