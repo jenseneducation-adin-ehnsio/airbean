@@ -5,9 +5,7 @@
       <NavButton v-bind:showNav="navVisible" v-on:navOpen="openNav" />
       <CartButton @click.native="toggleCart" />
     </header>
-
     <MenuList />
-
     <main>
       <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
       <Cart v-if="cart" />
