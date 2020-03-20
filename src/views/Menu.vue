@@ -2,22 +2,15 @@
   <div class="menu">
     <LoadingScreen v-show="false"/>
     <header>
-
       <NavButton v-bind:showNav="navVisible" v-on:navOpen="openNav" />
       <CartButton @click.native="toggleCart" />
     </header>
-
-    <MenuList />
-
-    <main>
-      <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
 
       <Cart v-if="cart" />
     <main>
       <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
       <MenuList />
     </main>
-
   </div>
 </template>
 
@@ -58,6 +51,7 @@ export default {
     },
     openNav() {
       this.navVisible = false;
+      this.cart = false;
     }
   }
 };
