@@ -1,13 +1,38 @@
 <template>
-  <div class="nav">
+  <div class="nav" :class="{ close: showNav }">
+    <button>
+      <!--   @click="closeNav"  -->
+      <img src="../assets/close.svg" @click="emitVisible" />
+    </button>
     <router-link to="/" class="link">Meny</router-link>
+    <hr />
     <router-link to="/about" class="link">Vårt kaffe</router-link>
+    <hr />
     <router-link to="/order" class="link">Orderstatus</router-link>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Nav",
+  props: {
+    showNav: Boolean
+  },
+  /*  data() {
+    return {
+      navVisible: false
+    };
+  }, */
+  methods: {
+    emitVisible() {
+      this.$emit("navClose");
+    }
+    /* closeNav() {
+      console.log("i am clicked");
+      this.navVisible = true;
+    } */
+  }
+};
 </script>
 
 <style scoped>
@@ -22,11 +47,34 @@ export default {};
   height: 812px;
   display: flex;
   flex-direction: column;
-  background-color: #2c1d1b;
+  background-color: #332b2b;
+  padding: 20px;
+}
+
+hr {
+  width: 10%;
+  margin: 5% 45%;
+  opacity: 0.3;
 }
 
 .link {
   text-decoration: none;
+}
+
+button {
+  width: 15%;
+  height: 75px;
+  border: 2px solid black;
+  border-radius: 50%;
+  margin-bottom: 100px;
+}
+
+img {
+  width: 40%;
+}
+
+.close {
+  display: none;
 }
 
 #overlay {
