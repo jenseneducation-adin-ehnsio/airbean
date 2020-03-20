@@ -6,9 +6,13 @@
 
 <script>
 export default {
+  name: "NavButton",
+  props: {
+    showNav: Boolean
+  },
   methods: {
     emitOpen() {
-      this.$emit("openNav");
+      this.$emit("navOpen");
     }
   }
 };

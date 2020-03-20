@@ -1,7 +1,6 @@
 <template>
   <div class="nav" :class="{ close: showNav }">
     <button>
-      <!--   @click="closeNav"  -->
       <img src="../assets/close.svg" @click="emitVisible" />
     </button>
     <router-link to="/" class="link">Meny</router-link>
@@ -18,19 +17,10 @@ export default {
   props: {
     showNav: Boolean
   },
-  /*  data() {
-    return {
-      navVisible: false
-    };
-  }, */
   methods: {
     emitVisible() {
       this.$emit("navClose");
     }
-    /* closeNav() {
-      console.log("i am clicked");
-      this.navVisible = true;
-    } */
   }
 };
 </script>

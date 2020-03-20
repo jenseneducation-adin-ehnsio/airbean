@@ -2,13 +2,11 @@
   <div class="menu">
     <LoadingScreen />
     <header>
-      <NavButton v-on:openNav="openNav()" />
-      <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
+      <NavButton v-bind:showNav="navVisible" v-on:navOpen="openNav" />
       <CartButton @click.native="toggleCart" />
     </header>
-
     <main>
-      <Nav />
+      <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
       <Cart v-if="cart" />
     </main>
   </div>
@@ -46,6 +44,9 @@ export default {
     },
     closeNav() {
       this.navVisible = true;
+    },
+    openNav() {
+      this.navVisible = false;
     }
   }
 };
