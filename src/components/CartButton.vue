@@ -19,11 +19,10 @@ export default {
     button{
         cursor: pointer;
         position: relative;
-        align-self: flex-end;
-        margin-right: 20px;
         border-radius: 50%;
         height: 80px;
         width: 80px;
+        margin: 25px 25px 0 auto ;
         border: none;
         background: rgb(46, 44, 44);
         &:focus{

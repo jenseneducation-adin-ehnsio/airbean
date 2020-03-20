@@ -1,27 +1,24 @@
 <template>
   <div class="menu">
-    <LoadingScreen />
+    <LoadingScreen v-show="false"/>
     <header>
       <NavButton v-on:openNav="openNav()" />
-      <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
       <CartButton @click.native="toggleCart" />
     </header>
 
 
-    <MenuList />
 
-    <main>
-      <Nav />
       <Cart v-if="cart" />
+    <main>
+      <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
+      <MenuList />
     </main>
   </div>
 </template>
 
 <script>
-import LoadingScreen from "@/components/LoadingScreen";
 import NavButton from "@/components/NavButton";
 import Nav from "@/components/Nav";
-
 import CartButton from '@/components/CartButton'
 import Cart from '@/components/Cart'
 import LoadingScreen from '@/components/LoadingScreen.vue'
@@ -56,6 +53,9 @@ export default {
     },
     closeNav() {
       this.navVisible = true;
+    },
+    openNav() {
+      this.navVisible = false;
     }
   }
 };
@@ -63,6 +63,7 @@ export default {
 
 <style lang="scss" scoped>
 .menu {
+  position: relative;
   background-color: pink;
   min-height: 810px;
   width: 100%;
@@ -72,7 +73,6 @@ header {
   display: flex;
   width: 100%;
   height: 120px;
-  justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
 }
 </style>
