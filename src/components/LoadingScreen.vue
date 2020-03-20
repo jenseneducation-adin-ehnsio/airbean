@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="loading-page"
-    @click="startLoading"
-    :class="{ fadeout: isLoading }"
-  >
+  <div class="loading-page" @click="startLoading" :class="{ fadeout: isLoading }">
     <img src="@/assets/intro-graphic-left.svg" class="border-left" />
     <img src="@/assets/airbean-landing.svg" class="logo" />
     <img src="@/assets/intro-graphic-right.svg" class="border-right" />
@@ -27,10 +23,6 @@ export default {
 </script>
 
 <style scoped>
-.fadeout {
-  animation: fadeout 1s forwards;
-}
-
 .loading-page {
   background: hsl(150, 35%, 40%);
   display: grid;
@@ -60,6 +52,9 @@ export default {
   margin-top: 300px;
   margin-left: -150px;
   z-index: 1;
+}
+.fadeout {
+  animation: fadeout 1s forwards;
 }
 
 @keyframes fadeout {
