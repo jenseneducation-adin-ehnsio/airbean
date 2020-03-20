@@ -4,6 +4,7 @@
     <header>
       <CartButton @click.native="toggleCart" />
     </header>
+    <MenuList />
     <main>
       <Cart v-if="cart"/>
     </main>
@@ -14,14 +15,15 @@
 
 import CartButton from '@/components/CartButton'
 import Cart from '@/components/Cart'
-import LoadingScreen from "@/components/LoadingScreen.vue";
+import LoadingScreen from '@/components/LoadingScreen.vue'
+import MenuList from '@/components/MenuList.vue'
 
 export default {
   data: () => {return{
     cart: false
   }},
   components: {
-    CartButton, Cart, LoadingScreen
+    CartButton, Cart, LoadingScreen, MenuList
   },
   computed: {
     menu() {
