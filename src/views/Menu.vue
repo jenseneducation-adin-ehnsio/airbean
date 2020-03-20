@@ -2,11 +2,15 @@
   <div class="menu">
     <LoadingScreen v-show="false"/>
     <header>
-      <NavButton v-on:openNav="openNav()" />
+
+      <NavButton v-bind:showNav="navVisible" v-on:navOpen="openNav" />
       <CartButton @click.native="toggleCart" />
     </header>
 
+    <MenuList />
 
+    <main>
+      <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
 
       <Cart v-if="cart" />
     <main>
@@ -24,10 +28,8 @@ import Cart from '@/components/Cart'
 import LoadingScreen from '@/components/LoadingScreen.vue'
 import MenuList from '@/components/MenuList.vue'
 
-
 export default {
   components: {
-
     CartButton,
     Cart,
     LoadingScreen,
@@ -40,7 +42,6 @@ export default {
       cart: false,
       navVisible: false
     };
-
   },
   computed: {
     menu() {
