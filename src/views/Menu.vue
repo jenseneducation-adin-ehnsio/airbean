@@ -5,6 +5,9 @@
       <NavButton v-bind:showNav="navVisible" v-on:navOpen="openNav" />
       <CartButton @click.native="toggleCart" />
     </header>
+
+    <MenuList />
+
     <main>
       <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
       <Cart v-if="cart" />
@@ -16,8 +19,11 @@
 import LoadingScreen from "@/components/LoadingScreen";
 import NavButton from "@/components/NavButton";
 import Nav from "@/components/Nav";
+
 import CartButton from "@/components/CartButton";
 import Cart from "@/components/Cart";
+
+import MenuList from "@/components/MenuList.vue";
 
 export default {
   components: {
@@ -25,7 +31,8 @@ export default {
     Cart,
     LoadingScreen,
     NavButton,
-    Nav
+    Nav,
+    MenuList
   },
   data: () => {
     return {
