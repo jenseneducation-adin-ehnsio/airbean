@@ -1,17 +1,24 @@
 <template>
   <div class="menu">
+
     <LoadingScreen />
     <header>
+     <NavButton />
       <CartButton @click.native="toggleCart" />
     </header>
+    
     <main>
+        <Nav />
       <Cart v-if="cart"/>
     </main>
+
   </div>
 </template>
 
 <script>
 
+import NavButton from "@/components/NavButton";
+import Nav from "@/components/Nav";
 import CartButton from '@/components/CartButton'
 import Cart from '@/components/Cart'
 import LoadingScreen from "@/components/LoadingScreen.vue";
@@ -21,8 +28,9 @@ export default {
     cart: false
   }},
   components: {
-    CartButton, Cart, LoadingScreen
+    CartButton, Cart, LoadingScreen,  NavButton, Nav
   },
+
   computed: {
     menu() {
       return this.$store.state.menu;
