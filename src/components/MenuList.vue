@@ -22,7 +22,7 @@ export default {
 
 <style lang="scss" scoped>
 .menu-list {
-    position: absolute;
+    position: relative;
     
 }
 </style>
