@@ -1,12 +1,12 @@
 <template>
   <div class="menu">
-    <LoadingScreen v-show="false"/>
+    <LoadingScreen v-show="false" />
     <header>
       <NavButton v-bind:showNav="navVisible" v-on:navOpen="openNav" />
       <CartButton @click.native="toggleCart" />
     </header>
 
-      <Cart v-if="cart" />
+    <Cart v-if="cart" />
     <main>
       <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
       <MenuList />
@@ -17,10 +17,10 @@
 <script>
 import NavButton from "@/components/NavButton";
 import Nav from "@/components/Nav";
-import CartButton from '@/components/CartButton'
-import Cart from '@/components/Cart'
-import LoadingScreen from '@/components/LoadingScreen.vue'
-import MenuList from '@/components/MenuList.vue'
+import CartButton from "@/components/CartButton";
+import Cart from "@/components/Cart";
+import LoadingScreen from "@/components/LoadingScreen.vue";
+import MenuList from "@/components/MenuList.vue";
 
 export default {
   components: {
