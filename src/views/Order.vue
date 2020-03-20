@@ -1,14 +1,10 @@
 <template>
-  <div class="order">
-  </div>
+  <div class="order"></div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
-
 </style>

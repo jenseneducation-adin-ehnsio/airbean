@@ -15,8 +15,13 @@ export default {
 <style lang="scss">
 * {
   box-sizing: border-box;
+  &:focus {
+    outline: none;
+  }
 }
-
+button:hover {
+  cursor: pointer;
+}
 body {
   margin: 0;
 }
