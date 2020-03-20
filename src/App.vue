@@ -32,7 +32,6 @@ body {
   color: #2c3e50;
   max-width: 500px;
   min-height: 812px;
-  border: 1px solid black;
   margin: 0 auto;
 }
 </style>
