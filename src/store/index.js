@@ -33,7 +33,6 @@ export default new Vuex.Store({
     },
     addOneItem(state, id){
       state.cart.find(item => item.id == id).quantity++
-      console.log(state.cart)
     },
     removeOneItem(state, id){
       state.cart.find(item => item.id == id).quantity--
