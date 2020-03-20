@@ -41,6 +41,7 @@ export default {
         z-index: 999;
         width: 90%;
         min-height: 300px;
+        top: 110px;
         right: 25px;
         background-color: #fff;
         border-radius: 5px;
@@ -67,7 +68,7 @@ export default {
             width: 30px;
             background-color: inherit;
             position: absolute;
-            right: 20px;
+            right: 25px;
             top: -8px;
             transform: rotate(45deg);
         }

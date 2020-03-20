@@ -32,7 +32,9 @@ body {
   text-align: center;
   color: #2c3e50;
   max-width: 500px;
+
   min-height: 810px;
+
   margin: 0 auto;
   
 }
