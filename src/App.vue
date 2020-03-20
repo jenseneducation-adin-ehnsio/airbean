@@ -28,11 +28,12 @@ body {
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  background-color: pink;
   text-align: center;
   color: #2c3e50;
   max-width: 500px;
-  min-height: 812px;
-  border: 1px solid black;
+  min-height: 810px;
   margin: 0 auto;
+  
 }
 </style>

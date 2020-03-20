@@ -7,11 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     menu: [],
-    cart: [
-      { "id":2, "title":"Caffè Doppio", "desc":"Bryggd på månadens bönor.", "price":49, "quantity":1 },
-      { "id":4, "title":"Latte Macchiato", "desc":"Bryggd på månadens bönor.", "price":49, "quantity":2 },
-      { "id":1,"title":"Bryggkaffe","desc":"Bryggd på månadens bönor.","price":39, "quantity":4 },
-    ]
+    cart: []
   },
   getters: {
     totalPrice: (state) => {
@@ -44,8 +40,12 @@ export default new Vuex.Store({
     removeThisItem(state, id) {
       let filterArray = state.cart.filter(item => item.id !== id)
       state.cart = filterArray
-    }
-  },
+    },
+    addThisItem(state, newItem){
+      state.cart.push(newItem)
+      
+  }
+},
   actions: {
     async fetchMenu(context) {
       const data = await API.fetchMenu()
@@ -60,6 +60,17 @@ export default new Vuex.Store({
     },
     removeFromCart({commit}, id) {
       commit('removeThisItem', id)
+    },
+    addItem({commit, state}, newItem){
+      
+      if(state.cart.find(item => item.id == newItem.id)){
+        commit('addOneItem', newItem.id)
+        console.log(state.cart)
+      }else{
+        newItem.quantity++
+        commit('addThisItem', newItem)
+        console.log(state.cart)
+      }
     }
-  },
+  }
 })

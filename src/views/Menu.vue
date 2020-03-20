@@ -2,16 +2,9 @@
   <div class="menu">
     <LoadingScreen v-show="false"/>
     <header>
-
       <NavButton v-bind:showNav="navVisible" v-on:navOpen="openNav" />
       <CartButton @click.native="toggleCart" />
     </header>
-
-    <MenuList />
-
-    <main>
-      <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
-
       <Cart v-if="cart" />
     <main>
       <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
@@ -40,7 +33,7 @@ export default {
   data: () => {
     return {
       cart: false,
-      navVisible: false
+      navVisible: true
     };
   },
   computed: {
@@ -65,7 +58,6 @@ export default {
 <style lang="scss" scoped>
 .menu {
   position: relative;
-  background-color: pink;
   min-height: 810px;
   width: 100%;
   padding-bottom: 20px;

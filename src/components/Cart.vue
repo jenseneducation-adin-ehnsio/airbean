@@ -38,7 +38,7 @@ export default {
 <style lang="scss" scoped>
     .cart {
         position: absolute;
-        z-index: 99;
+        z-index: 999;
         width: 90%;
         min-height: 300px;
         right: 25px;
