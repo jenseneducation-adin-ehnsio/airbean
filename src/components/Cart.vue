@@ -37,10 +37,10 @@ export default {
 
 <style lang="scss" scoped>
     .cart {
-        position: relative;
+        position: absolute;
+        right: 25px;
         width: 90%;
         min-height: 300px;
-        margin: 0 auto;
         background-color: #fff;
         border-radius: 5px;
         margin-top: -20px;

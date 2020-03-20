@@ -7,6 +7,7 @@
     <main>
       <Cart v-if="cart"/>
     </main>
+
   </div>
 </template>
 
@@ -39,6 +40,7 @@ export default {
 
 <style lang="scss" scoped>
   .menu {
+    position: relative;
     background-color: pink;
     min-height: 810px;
     width: 100%;
