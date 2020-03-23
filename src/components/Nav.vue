@@ -1,7 +1,7 @@
 <template>
   <div class="nav" :class="{ close: showNav }">
     <button @click="emitVisible">
-      <img src="../assets/close.svg" />
+      <img src="../assets/close.svg" class="nav-button" />
     </button>
     <router-link to="/" class="link">Meny</router-link>
     <hr />
@@ -53,7 +53,7 @@ export default {
   background-color: #332b2b;
   opacity: 0.95;
   z-index: 2;
-  padding: 20px;
+  padding: 25px;
   cursor: pointer;
 }
 
@@ -68,14 +68,14 @@ hr {
 }
 
 button {
-  width: 15%;
-  height: 75px;
+  width: 80px;
+  height: 80px;
   border: 2px solid black;
   border-radius: 50%;
   margin-bottom: 100px;
 }
 
-img {
+.nav-button {
   width: 40%;
 }
 
