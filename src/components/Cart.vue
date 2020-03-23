@@ -1,5 +1,9 @@
 <template>
     <div class="cart">
+        <div v-if="loading" class="loader">
+            <img src="@/assets/loader.png" alt="">
+            <p>Jobbar på din order..</p>
+        </div>
         <div class="tag"></div>
         <h1>Din beställning</h1>
         <div v-for='item in cart' :key="item.id" class="cart-items">
@@ -11,7 +15,7 @@
             <h2>{{totalPrice}} kr</h2>
         </div>
         <p>inkl moms + drönarleverans</p>
-        <button>
+        <button @click="placeOrder" >
             Take my money!
         </button>
     </div>
@@ -21,6 +25,9 @@
 import CartItem from '@/components/CartItem'
 
 export default {
+    data: () => {return{
+        loading: false
+    }},
     components: {
         CartItem
     },
@@ -31,6 +38,14 @@ export default {
         totalPrice() {
             return this.$store.getters.totalPrice
         }
+    },
+    methods: {
+        async placeOrder() {
+            this.loading = true
+            await this.$store.dispatch('placeOrder')
+            this.loading = false
+            this.$router.push('/order')
+        }
     } 
 }
 </script>
@@ -38,7 +53,7 @@ export default {
 <style lang="scss" scoped>
     .cart {
         position: absolute;
-        z-index: 999;
+        z-index: 99;
         width: 90%;
         min-height: 300px;
         top: 110px;
@@ -46,6 +61,25 @@ export default {
         background-color: #fff;
         border-radius: 5px;
         padding: 1px 20px 20px 20px;
+        .loader{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: 999;
+            color: white;
+            backdrop-filter: brightness(50%);
+            img {
+                margin-top: 250px;
+                margin-bottom: 10px;
+            }
+        }
         button {
             cursor: pointer;
             margin: 50px auto 0 auto;
@@ -77,6 +111,7 @@ export default {
            font-size: 2.5rem;
         }
         .total-price {
+            
             display: flex;
             align-items: flex-end;
             margin-top: 100px;

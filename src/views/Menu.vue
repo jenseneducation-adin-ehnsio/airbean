@@ -1,6 +1,6 @@
 <template>
   <div class="menu">
-    <LoadingScreen v-show="false" />
+    <LoadingScreen v-show="true" />
     <header>
       <NavButton v-bind:showNav="navVisible" v-on:navOpen="openNav" />
       <CartButton @click.native="toggleCart" />

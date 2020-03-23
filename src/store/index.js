@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     menu: [],
-    cart: []
+    cart: [],
+    order: {}
   },
   getters: {
     totalPrice: (state) => {
@@ -29,7 +30,6 @@ export default new Vuex.Store({
   mutations: {
     addToMenu(state, data){
       state.menu = data
-      console.log(data)
     },
     addOneItem(state, id){
       state.cart.find(item => item.id == id).quantity++
@@ -43,14 +43,25 @@ export default new Vuex.Store({
     },
     addThisItem(state, newItem){
       state.cart.push(newItem)
-      
-  }
+    },
+    saveOrder(state, order) {
+      state.order = order
+    },
+    emptyCart(state) {
+      state.cart = []
+      console.log(state.cart)
+    }
 },
   actions: {
-    async fetchMenu(context) {
+    async fetchMenu({commit}) {
       const data = await API.fetchMenu()
-      context.commit('addToMenu', data)
+      commit('addToMenu', data)
       return true
+    },
+    async placeOrder({commit}) {
+      const data = await API.addOrder()
+      commit('saveOrder', data)
+      commit('emptyCart')
     },
     increase({commit}, id) {
       commit('addOneItem', id)
@@ -62,14 +73,11 @@ export default new Vuex.Store({
       commit('removeThisItem', id)
     },
     addItem({commit, state}, newItem){
-      
       if(state.cart.find(item => item.id == newItem.id)){
         commit('addOneItem', newItem.id)
-        console.log(state.cart)
       }else{
-        newItem.quantity++
+        newItem.quantity = 1
         commit('addThisItem', newItem)
-        console.log(state.cart)
       }
     }
   }
