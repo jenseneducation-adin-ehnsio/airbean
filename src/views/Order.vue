@@ -16,7 +16,5 @@ export default {
 </script>
 
 <style>
-  * {
-    margin: 0;
-  }
+ 
 </style>

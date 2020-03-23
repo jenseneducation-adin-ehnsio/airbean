@@ -36,7 +36,7 @@ export default {
 
 <style lang="scss" scoped>
     .cart-item {
-        margin: 30px auto;
+        margin: 0 auto;
         display: flex;
         align-items: center;
         text-align: left;
