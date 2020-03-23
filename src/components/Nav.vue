@@ -1,7 +1,7 @@
 <template>
   <div class="nav" :class="{ close: showNav }">
     <button @click="emitVisible">
-    <img src="../assets/close.svg"  />
+      <img src="../assets/close.svg" />
     </button>
     <router-link to="/" class="link">Meny</router-link>
     <hr />
@@ -33,12 +33,28 @@ export default {
   font-size: 2rem;
 }
 .nav {
-  width: 500px;
+  /* width: 500px;
   height: 812px;
   display: flex;
   flex-direction: column;
   background-color: #332b2b;
+  padding: 20px; */
+
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 812px;
+  margin: auto;
+  top: -150px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #332b2b;
+  opacity: 0.95;
+  z-index: 2;
   padding: 20px;
+  cursor: pointer;
 }
 
 hr {
