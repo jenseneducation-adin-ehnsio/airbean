@@ -26,6 +26,8 @@ export default {
 .loading-page {
   background: hsl(150, 35%, 40%);
   display: grid;
+  z-index: 999;
+  position: fixed;
   width: 500px;
   height: 812px;
   grid-template-columns: 45% 10% 45%;
