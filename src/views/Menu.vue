@@ -83,9 +83,7 @@ export default {
   position: relative;
   min-height: 10px;
   width: 100%;
-  // padding-bottom: 20px;
   background-color: $color-pink;
-  // display: flex;
   overflow: auto;
 }
 .main {

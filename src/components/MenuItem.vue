@@ -36,7 +36,7 @@ export default {
 
 .menu-item {
     box-sizing: border-box;
-    margin: 20px 20px 20px 20px;
+    margin: 20px 25px 20px 25px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
