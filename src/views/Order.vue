@@ -2,7 +2,7 @@
   <div class="order">
     <h4>
       Ordernummer
-      <strong>{{order.orderNr}}</strong>
+      <strong>{{ order.orderNr }}</strong>
     </h4>
 
     <img src="@/assets/drone.svg" class="hover" />
@@ -11,7 +11,7 @@
       <strong>Din beställning är på väg</strong>
     </h2>
     <h3>
-      <strong>{{order.eta}}</strong> minuter
+      <strong>{{ order.eta }}</strong> minuter
     </h3>
     <router-link to="/">
       <button class="okCool">Ok, cool!</button>
@@ -31,9 +31,12 @@ export default {
 
 <style lang="scss" scoped>
 .order {
+  height: 810px;
   display: flex;
   flex-direction: column;
   padding: 50px;
+  color: white;
+  background-color: $color-orange;
 }
 
 h2 {
