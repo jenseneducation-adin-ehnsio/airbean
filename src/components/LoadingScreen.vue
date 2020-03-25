@@ -45,18 +45,4 @@ export default {
   margin-left: -150px;
   z-index: 1;
 }
-/* .fadeout {
-  animation: fadeout 1s forwards;
-}
-
-@keyframes fadeout {
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
-.hidden {
-  visibility: hidden;
-} */
 </style>
