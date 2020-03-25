@@ -25,6 +25,6 @@ button {
   border: none;
   border-radius: 50%;
   margin: 25px auto 0 25px;
-
+  background-color: white;
 }
 </style>
