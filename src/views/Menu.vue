@@ -1,7 +1,7 @@
 <template>
   <div class="menu">
     <transition name="fade">
-      <LoadingScreen v-if="show" @click.native="showLoading" />
+      <LoadingScreen v-if="loading" />
     </transition>
 
     <header>
@@ -39,20 +39,15 @@ export default {
     return {
       cart: false,
       navVisible: true,
-      show: true
     };
-  },
-  created() {
-    if (sessionStorage.getItem("show")) {
-      this.show = false;
-    } else {
-      this.show = true;
-    }
   },
 
   computed: {
     menu() {
       return this.$store.state.menu;
+    },
+    loading() {
+      return this.$store.state.loading;
     }
   },
   methods: {
@@ -66,10 +61,6 @@ export default {
       this.navVisible = false;
       this.cart = false;
     },
-    showLoading() {
-      this.show = false;
-      sessionStorage.setItem("show", JSON.stringify(this.show));
-    }
   }
 };
 </script>

@@ -2,13 +2,15 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import * as API from '@/api/index.js'
 
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     menu: [],
     cart: [],
-    order: {}
+    order: {},
+    loading: true
   },
   getters: {
     totalPrice: (state) => {
@@ -49,13 +51,15 @@ export default new Vuex.Store({
     },
     emptyCart(state) {
       state.cart = []
-      console.log(state.cart)
     }
 },
   actions: {
-    async fetchMenu({commit}) {
+    async fetchMenu({commit, state}) {
       const data = await API.fetchMenu()
       commit('addToMenu', data)
+      setTimeout(() => {
+        state.loading = false;
+      }, 2000);
       return true
     },
     async placeOrder({commit}) {
