@@ -25,19 +25,20 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .nav {
   font-size: 2rem;
   position: absolute;
   display: flex;
   flex-direction: column;
+  font-weight: 700;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #2f2926;
-  opacity: 0.95;
-  z-index: 2;
+  background-color: $color-brown;
+  /* opacity: 0.95; */
+  z-index: 999;
   padding: 25px;
   cursor: pointer;
 }
@@ -60,9 +61,10 @@ hr {
 button {
   width: 80px;
   height: 80px;
-  border: 2px solid black;
+  border: none;
   border-radius: 50%;
   margin-bottom: 100px;
+  background-color: white;
 }
 
 .nav-button {

@@ -24,7 +24,7 @@ export default {
         width: 80px;
         margin: 25px 25px 0 auto ;
         border: none;
-        background: rgb(46, 44, 44);
+        background: $color-brown;
         &:focus{
             outline: 0;
         }
@@ -35,7 +35,7 @@ export default {
             height: 30px;
             width: 30px;
             color: white;
-            background-color: rgb(230, 106, 106);
+            background-color: $color-orange;
             border-radius: 50%;
             position: absolute;
             display: flex;

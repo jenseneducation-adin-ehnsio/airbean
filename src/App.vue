@@ -13,6 +13,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:400,700|Work+Sans&display=swap');
 * {
   box-sizing: border-box;
   &:focus {
@@ -25,12 +26,14 @@ button:hover {
 body {
   margin: 0;
 }
-
+p {
+  font-family: 'Work Sans', sans-serif;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  background-color: pink;
+  font-family: 'PT Serif', serif;
+  background-color: $color-pink;
   text-align: center;
-  color: #2c3e50;
+  color: $color-brown;
   max-width: 500px;
 
   min-height: 810px;

@@ -75,7 +75,7 @@ export default {
 
 <style lang="scss" scoped>
 .about {
-  background: #fdeded;
+  background: $color-pink;
   position: relative;
 }
 
