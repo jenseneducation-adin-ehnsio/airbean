@@ -11,7 +11,15 @@ async function fetchMenu() {
 }
 
 async function addOrder() {
-  const response = await api.post("/beans");
+  const response = await api.post("/beans", {
+    body: {
+      'items': "banan",
+      'value': 5
+
+      // 'items': this.$store.state.cart,
+      // 'value': this.$store.getters.totalPrice
+    }
+  });
   const data = response.data
   return data
 }
