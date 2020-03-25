@@ -72,10 +72,12 @@ export default {
 <style lang="scss" scoped>
 .menu {
   position: relative;
-  min-height: 10px;
+  min-height: 100vh;
   width: 100%;
   background-color: $color-pink;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
 }
 .main {
   min-height: 500px;
@@ -93,6 +95,7 @@ footer {
   justify-content: flex-end;
   align-items: flex-end;
   position: relative;
+  margin-top: auto;
 }
 .fade-leave-active {
   transition: all 1s ease-in-out;
@@ -105,6 +108,7 @@ footer {
   z-index: 2;
   width: 100%;
 }
+
 .cart-button, .nav-button {
   position: relative;
   z-index: 4;

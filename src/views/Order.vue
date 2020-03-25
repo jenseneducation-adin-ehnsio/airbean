@@ -1,5 +1,6 @@
 <template>
   <div class="order">
+    <div class="order-wrapper">
     <h4>
       Ordernummer
       <strong>{{ order.orderNr }}</strong>
@@ -10,9 +11,10 @@
     <h2>
       <strong>Din beställning är på väg</strong>
     </h2>
-    <h3>
+    <p>
       <strong>{{ order.eta }}</strong> minuter
-    </h3>
+    </p>
+    </div>
     <router-link to="/">
       <button class="okCool">Ok, cool!</button>
     </router-link>
@@ -31,17 +33,20 @@ export default {
 
 <style lang="scss" scoped>
 .order {
-  height: 810px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 50px;
   color: white;
   background-color: $color-orange;
+  p {
+    font-size: 1.2rem;
+  }
 }
 
 h2 {
   font-size: 2rem;
-  padding: 0 80px;
+
   margin-top: 60px;
 }
 
@@ -55,13 +60,14 @@ h3 > strong {
 
 .okCool {
   margin: 50px auto 0 auto;
-  font-size: 2.2rem;
+  font-size: 1.4rem;
   padding: 20px 40px;
   background-color: white;
   color: black;
   border: none;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: 60px;
+  font-family: inherit;
 }
 
 .hover {

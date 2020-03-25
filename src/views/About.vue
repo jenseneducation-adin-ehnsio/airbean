@@ -74,19 +74,33 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+header {
+  display: flex;
+  height: 120px;
+  flex-direction: row;
+  width: 100%;
+}
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: relative;
+}
 .about {
   background: $color-pink;
   position: relative;
+  width: 100%;
 }
 
 .border-top,
 .border-bottom {
   width: 100%;
-}
-.navButton {
   position: absolute;
-  margin-top: 25px;
-  margin-left: -475px;
+}
+
+.navButton {
+  position: fixed;
 }
 h1 {
   font-size: 3rem;
@@ -113,5 +127,8 @@ h2 {
 
 h5 {
   margin-top: 5px;
+}
+.profile {
+  margin-bottom: 100px;
 }
 </style>
