@@ -11,8 +11,8 @@
         </div>
         <div class="total-price">
             <h2>Total</h2>
-            <p>.....................................................</p>
-            <h2>{{totalPrice}} kr</h2>
+            <p>..........................................................................</p>
+            <h2 class="total" >{{totalPrice}} kr</h2>
         </div>
         <p>inkl moms + drönarleverans</p>
         <button @click="placeOrder" >
@@ -57,7 +57,7 @@ export default {
         width: 90%;
         min-height: 300px;
         top: 110px;
-        right: 25px;
+        right: 20px;
         background-color: #fff;
         border-radius: 5px;
         padding: 1px 20px 20px 20px;
@@ -72,6 +72,8 @@ export default {
             width: 100%;
             height: 100%;
             position: fixed;
+            margin: 0 auto;
+            max-width: 500px;
             z-index: 999;
             color: white;
             backdrop-filter: brightness(50%);
@@ -81,34 +83,33 @@ export default {
             }
         }
         button {
-            cursor: pointer;
             margin: 50px auto 0 auto;
-            font-size: 2.2rem;
+            font-size: 1.4rem;
             letter-spacing: 2px;
             padding: 20px 40px;
             white-space: nowrap;
             background-color: rgb(46, 44, 44);
             color: white;
             border: none;
-            font-weight: 600;
+            font-family: inherit;
+            font-weight: 700;
             border-radius: 60px;
         }
         p {
             text-align: left;
-            margin: 5px;
         }
         .tag {
             height: 30px;
             width: 30px;
             background-color: inherit;
             position: absolute;
-            right: 25px;
+            right: 30px;
             top: -8px;
             transform: rotate(45deg);
         }
         h1 {
            margin-top: 50px;
-           font-size: 2.5rem;
+           font-size: 2rem;
         }
         .total-price {
             
@@ -117,12 +118,15 @@ export default {
             margin-top: 100px;
             h2 {
                 margin: 0;
-                font-size: 2rem;
+                font-size: 1.5rem;
                 white-space: nowrap;
             }
             p {
-                margin: 0 20px 5px 5px;
+                margin: 0 25px 2px 10px;
                 overflow: hidden;
+            }
+            .total {
+                margin-left: auto;
             }
         }
     }

@@ -10,16 +10,13 @@ async function fetchMenu() {
   return data;
 }
 
-async function addOrder() {
-  const response = await api.post("/beans", {
-    body: {
-      'items': "banan",
-      'value': 5
-
-      // 'items': this.$store.state.cart,
-      // 'value': this.$store.getters.totalPrice
+async function addOrder(cart, price) {
+  const response = await api.post("/beans", 
+    {
+      items: cart,
+      value: price
     }
-  });
+  );
   const data = response.data
   return data
 }

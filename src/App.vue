@@ -36,7 +36,7 @@ p {
   color: $color-brown;
   max-width: 500px;
 
-  min-height: 810px;
+  min-height: 100vh;
 
   margin: 0 auto;
   
