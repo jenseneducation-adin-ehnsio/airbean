@@ -5,16 +5,20 @@
     </transition>
 
     <header>
-      <NavButton v-bind:showNav="navVisible" v-on:navOpen="openNav" />
-      <CartButton @click.native="toggleCart" />
+      <img src="@/assets/graphics-header.svg" class="border-top" />
+      <NavButton v-bind:showNav="navVisible" v-on:navOpen="openNav" class="nav-button" />
+      <CartButton @click.native="toggleCart" class="cart-button" />
     </header>
 
-    <Cart v-if="cart" />
 
-    <main>
+    <main class="main">
+    <Cart v-if="cart" />
       <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
       <MenuList />
     </main>
+    <footer>
+      <img src="@/assets/graphics-footer.svg" class="border-bottom" />
+    </footer>
   </div>
 </template>
 
@@ -77,9 +81,15 @@ export default {
 <style lang="scss" scoped>
 .menu {
   position: relative;
-  min-height: 810px;
+  min-height: 10px;
   width: 100%;
-  padding-bottom: 20px;
+  // padding-bottom: 20px;
+  background-color: $color-pink;
+  // display: flex;
+  overflow: auto;
+}
+.main {
+  min-height: 500px;
 }
 header {
   display: flex;
@@ -87,12 +97,31 @@ header {
   height: 120px;
   flex-direction: row;
 }
-
+footer {
+  display: flex;
+  height: 120px;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: relative;
+}
 .fade-leave-active {
   transition: all 1s ease-in-out;
 }
-
 .fade-leave-active {
   opacity: 0;
+}
+.border-bottom, .border-top {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+}
+.cart-button, .nav-button {
+  position: relative;
+  z-index: 4;
+}
+.nav-button {
+  position: fixed;
+  z-index: 4;
 }
 </style>

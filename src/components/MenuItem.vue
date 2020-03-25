@@ -1,14 +1,14 @@
 <template>
     <div class="menu-item">
-        <img class="add-button" 
-        src="@/assets/add.svg" 
-        alt="Add Item"
-        height="25px"
-        width="25px"
-        @click="addItem"
-        >
         <header class="menu-item-header">
-            <h2> {{item.title}} 
+            <img class="add-button"
+                src="@/assets/add.svg" 
+                alt="Add Item"
+                height="18px"
+                width="18px"
+                @click="addItem"
+            >
+            <h2 class="item-title"> {{item.title}} 
                 <p class="item-desc"> {{item.desc}} </p>
             </h2>
             <h2 class="price"> {{item.price}} kr </h2>
@@ -33,38 +33,45 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 .menu-item {
     box-sizing: border-box;
-    margin: 5px 40px 5px 40px;
+    margin: 20px 20px 20px 20px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     text-align: start;
     .menu-item-header {
         width: 100%;
-        margin: 20px;
         display: flex;
         justify-content: space-between;
-        h2 {
-            margin: 0;
+        align-items: center;
+        .item-title {
+            margin: 0 auto 0 20px;
         }
         .item-desc{
             margin: 0;
-            font-size: 1rem;
+            font-size: 0.8rem;
             font-weight: 100;
         }
     }
+    
 }
-
 .add-button {
-    box-sizing: content-box;
-    background-color: #2c3e50;
-    border: 10px solid #2c3e50;
+    box-sizing: content-box;;
+    padding: 0;
+    display: flex;
+    background-color: $color-brown;
+    border: solid 8px;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
         &:hover {
             cursor: pointer;
         }
 }
+
 
 
 </style>
