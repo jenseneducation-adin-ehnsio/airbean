@@ -1,5 +1,5 @@
 <template>
-  <div class="loading-page" @click="startLoading" :class="{ fadeout: isLoading }">
+  <div class="loading-page">
     <img src="@/assets/intro-graphic-left.svg" class="border-left" />
     <img src="@/assets/airbean-landing.svg" class="logo" />
     <img src="@/assets/intro-graphic-right.svg" class="border-right" />
@@ -8,17 +8,7 @@
 
 <script>
 export default {
-  name: "LoadingScreen",
-  data() {
-    return {
-      isLoading: false
-    };
-  },
-  methods: {
-    startLoading() {
-      this.isLoading = true;
-    }
-  }
+  name: "LoadingScreen"
 };
 </script>
 
@@ -55,7 +45,7 @@ export default {
   margin-left: -150px;
   z-index: 1;
 }
-.fadeout {
+/* .fadeout {
   animation: fadeout 1s forwards;
 }
 
@@ -65,4 +55,8 @@ export default {
     visibility: hidden;
   }
 }
+
+.hidden {
+  visibility: hidden;
+} */
 </style>

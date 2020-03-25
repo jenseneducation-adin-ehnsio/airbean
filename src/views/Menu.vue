@@ -1,6 +1,9 @@
 <template>
   <div class="menu">
-    <LoadingScreen v-show="true" />
+    <transition name="fade">
+      <LoadingScreen v-if="show" @click.native="showLoading" />
+    </transition>
+
     <header>
       <NavButton v-bind:showNav="navVisible" v-on:navOpen="openNav" />
       <CartButton @click.native="toggleCart" />
@@ -35,9 +38,18 @@ export default {
   data: () => {
     return {
       cart: false,
-      navVisible: true
+      navVisible: true,
+      show: true
     };
   },
+  created() {
+    if (sessionStorage.getItem("show")) {
+      this.show = false;
+    } else {
+      this.show = true;
+    }
+  },
+
   computed: {
     menu() {
       return this.$store.state.menu;
@@ -53,6 +65,10 @@ export default {
     openNav() {
       this.navVisible = false;
       this.cart = false;
+    },
+    showLoading() {
+      this.show = false;
+      sessionStorage.setItem("show", JSON.stringify(this.show));
     }
   }
 };
@@ -70,5 +86,13 @@ header {
   width: 100%;
   height: 120px;
   flex-direction: row;
+}
+
+.fade-leave-active {
+  transition: all 1s ease-in-out;
+}
+
+.fade-leave-active {
+  opacity: 0;
 }
 </style>

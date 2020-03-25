@@ -1,7 +1,7 @@
 <template>
-  <div class="nav" :class="{ close: showNav }">
-    <button @click="emitVisible">
-      <img src="../assets/close.svg" class="nav-button" />
+  <div class="nav" @click="emitVisible" :class="{ close: showNav }">
+    <button>
+      <img src="@/assets/close.svg" class="nav-button" />
     </button>
     <router-link to="/" class="link">Meny</router-link>
     <hr />
@@ -26,35 +26,25 @@ export default {
 </script>
 
 <style scoped>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  color: white;
-  font-size: 2rem;
-}
 .nav {
-  /* width: 500px;
-  height: 812px;
+  font-size: 2rem;
+  position: absolute;
   display: flex;
   flex-direction: column;
-  background-color: #332b2b;
-  padding: 20px; */
-
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  width: 500px;
-  height: 812px;
-  margin: auto;
-  top: -150px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #332b2b;
+  background-color: #2f2926;
   opacity: 0.95;
   z-index: 2;
   padding: 25px;
   cursor: pointer;
+}
+
+a:link,
+a:visited {
+  color: white;
 }
 
 hr {
@@ -81,19 +71,5 @@ button {
 
 .close {
   display: none;
-}
-
-#overlay {
-  position: fixed;
-  display: none;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2;
-  cursor: pointer;
 }
 </style>
