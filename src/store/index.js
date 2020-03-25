@@ -62,8 +62,8 @@ export default new Vuex.Store({
       }, 2000);
       return true
     },
-    async placeOrder({commit}) {
-      const data = await API.addOrder()
+    async placeOrder({commit, state, getters}) {
+      const data = await API.addOrder(state.cart, getters.totalPrice)
       commit('saveOrder', data)
       commit('emptyCart')
     },

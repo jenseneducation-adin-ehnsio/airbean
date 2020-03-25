@@ -27,11 +27,13 @@ export default {
 
 <style lang="scss" scoped>
 .nav {
+  max-width: 500px;
   font-size: 2rem;
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   font-weight: 700;
+  margin: 0 auto;
   top: 0;
   left: 0;
   right: 0;

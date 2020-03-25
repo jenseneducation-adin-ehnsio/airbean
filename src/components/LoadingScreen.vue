@@ -19,7 +19,7 @@ export default {
   z-index: 999;
   position: fixed;
   width: 500px;
-  height: 812px;
+  height: 100vh;
   grid-template-columns: 45% 10% 45%;
   grid-template-areas: "border-left logo border-right";
 }

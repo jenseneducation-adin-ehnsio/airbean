@@ -20,15 +20,12 @@ router.post('/', async (req, res) => {
         orderNr: generateOrderNr(),
     }
 
-    // let parsedBody = JSON.parse(req.body)
-
-
-    db.get('orders')
+    db.get('orders') // Ska hämta orders efter uuid (key, se funktion nedan)
     .push({ 
         orderNumber: order.orderNr, 
         timeStamp: Date.now(), 
-        // Items: parsedBody.items, 
-        // totalValue: parsedBody.value
+        Items: parsedBody.items, 
+        totalValue: parsedBody.value
     })
     .write()
 
