@@ -24,12 +24,10 @@ router.post('/', async (req, res) => {
     .push({ 
         orderNumber: order.orderNr, 
         timeStamp: Date.now(), 
-        Items: parsedBody.items, 
-        totalValue: parsedBody.value
+        Items: req.body.items, 
+        totalValue: req.body.value
     })
     .write()
-
-    console.log(req.body)
     
     setTimeout(() => {
         res.send(order);

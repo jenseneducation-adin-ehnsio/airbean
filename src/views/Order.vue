@@ -1,6 +1,6 @@
 <template>
-  <div class="order">
-    <div class="order-wrapper">
+  <div  class="order">
+    <div v-if="order.eta" class="order-wrapper">
     <h4>
       Ordernummer
       <strong>{{ order.orderNr }}</strong>
@@ -14,6 +14,10 @@
     <p>
       <strong>{{ order.eta }}</strong> minuter
     </p>
+    </div>
+    <div v-else class="no-order">
+      <h2>Du har ingen beställning</h2>
+      <p>Besök din profil för att se tidigare ordrar</p>
     </div>
     <router-link to="/">
       <button class="okCool">Ok, cool!</button>
