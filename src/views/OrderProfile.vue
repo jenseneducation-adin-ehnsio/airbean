@@ -7,8 +7,8 @@
     </header>
     <div class="profile-info">
       <img src="@/assets/mask.svg" class="photo" />
-      <h1>FirstName LastName</h1>
-      <p>example@example.com</p>
+      <h1>{{user.name}}</h1>
+      <p>{{user.mail}}</p>
     </div>
     <div class="order-history">
       <h1>Orderhistorik</h1>
@@ -55,6 +55,22 @@ export default {
     },
     openNav() {
       this.navVisible = false;
+    }
+  },
+  computed: {
+    user() {
+      return this.$store.state.user
+    },
+    orderHistory() {
+      return this.$store.state.orderHistory
+    }
+  },
+  created() {
+    if(!this.user.id) {
+      this.$store.dispatch('setId')
+    }
+    else {
+      this.$store.dispatch('getOrders', this.user.id)
     }
   }
 };

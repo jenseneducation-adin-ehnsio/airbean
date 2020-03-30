@@ -62,6 +62,7 @@ export default {
 
 <style lang="scss" scoped>
     .cart {
+        -webkit-tap-highlight-color: transparent;
         position: absolute;
         z-index: 99;
         width: 90%;
@@ -97,7 +98,6 @@ export default {
         button {
             margin: 50px auto 0 auto;
             font-size: 1.4rem;
-            letter-spacing: 2px;
             padding: 20px 40px;
             white-space: nowrap;
             background-color: rgb(46, 44, 44);

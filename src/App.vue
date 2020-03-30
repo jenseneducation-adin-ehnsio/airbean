@@ -8,6 +8,14 @@
 export default {
   created() {
     this.$store.dispatch("fetchMenu");
+    if(localStorage.getItem('id')) {
+      try {
+        let id = JSON.parse(localStorage.getItem('id'));
+        this.$store.dispatch('setId', id)
+      } catch(e) {
+        localStorage.removeItem('id');
+      }
+    }
   }
 };
 </script>
@@ -37,6 +45,5 @@ p {
   max-width: 500px;
   min-height: 100vh;
   margin: 0 auto;
-  
 }
 </style>
