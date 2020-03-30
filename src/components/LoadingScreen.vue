@@ -20,6 +20,7 @@ export default {
   position: fixed;
   max-width: 500px;
   height: 100vh;
+
   grid-template-columns: 45% 10% 45%;
   grid-template-areas: "border-left logo border-right";
 }

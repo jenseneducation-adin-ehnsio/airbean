@@ -7,6 +7,8 @@
     <hr />
     <router-link to="/about" class="link">Vårt kaffe</router-link>
     <hr />
+    <router-link to="/profile" class="link">Min Profil</router-link>
+    <hr />
     <router-link to="/order" class="link">Orderstatus</router-link>
   </div>
 </template>
