@@ -35,9 +35,7 @@ p {
   text-align: center;
   color: $color-brown;
   max-width: 500px;
-
   min-height: 100vh;
-
   margin: 0 auto;
   
 }

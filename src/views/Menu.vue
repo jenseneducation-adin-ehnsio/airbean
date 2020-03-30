@@ -1,5 +1,5 @@
 <template>
-  <div class="menu">
+  <div class="menu" >
     <transition name="fade">
       <LoadingScreen v-if="loading" />
     </transition>
@@ -57,6 +57,7 @@ export default {
   methods: {
     toggleCart() {
       this.cart = !this.cart;
+
     },
     closeNav() {
       this.navVisible = true;
@@ -64,7 +65,7 @@ export default {
     openNav() {
       this.navVisible = false;
       this.cart = false;
-    },
+    }
   }
 };
 </script>
@@ -75,7 +76,7 @@ export default {
   min-height: 100vh;
   width: 100%;
   background-color: $color-pink;
-  overflow: auto;
+  overflow: overlay;
   display: flex;
   flex-direction: column;
 }
@@ -89,13 +90,15 @@ header {
   flex-direction: row;
 }
 footer {
+  margin-top: auto;
   display: flex;
   height: 120px;
   width: 100%;
-  justify-content: flex-end;
-  align-items: flex-end;
-  position: relative;
-  margin-top: auto;
+  max-width: 500px;
+  bottom: 0;
+  img {
+    margin-top: auto;
+  }
 }
 .fade-leave-active {
   transition: all 1s ease-in-out;
@@ -104,9 +107,12 @@ footer {
   opacity: 0;
 }
 .border-bottom, .border-top {
-  position: absolute;
   z-index: 2;
   width: 100%;
+}
+
+.border-top {
+  position: absolute;
 }
 
 .cart-button, .nav-button {

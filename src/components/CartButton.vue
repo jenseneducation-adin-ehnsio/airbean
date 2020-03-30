@@ -22,7 +22,7 @@ export default {
         border-radius: 50%;
         height: 80px;
         width: 80px;
-        margin: 25px 25px 0 auto ;
+        margin: 25px 25px 0 auto;
         border: none;
         background: $color-brown;
         &:focus{
