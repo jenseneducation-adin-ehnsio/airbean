@@ -18,6 +18,7 @@
         <button @click="placeOrder" >
             Take my money!
         </button>
+        <p v-if="emptyMsg" class="empty-cart">Your cart is empty</p>
     </div>
 </template>
 
@@ -26,7 +27,8 @@ import CartItem from '@/components/CartItem'
 
 export default {
     data: () => {return{
-        loading: false
+        loading: false,
+        emptyMsg: false
     }},
     components: {
         CartItem
@@ -41,10 +43,18 @@ export default {
     },
     methods: {
         async placeOrder() {
-            this.loading = true
-            await this.$store.dispatch('placeOrder')
-            this.loading = false
-            this.$router.push('/order')
+            if(this.cart.length >= 1) {
+                this.loading = true
+                await this.$store.dispatch('placeOrder')
+                this.loading = false
+                this.$router.push('/order')
+            }
+            else {
+                this.emptyMsg = true
+                setTimeout(() => {
+                    this.emptyMsg = false
+                }, 5000);
+            }
         }
     } 
 }
@@ -57,10 +67,12 @@ export default {
         width: 90%;
         min-height: 300px;
         top: 110px;
-        right: 20px;
+        left: 50%;
+        transform: translate(-50%, 0);
         background-color: #fff;
         border-radius: 5px;
-        padding: 1px 20px 20px 20px;
+        padding: 1px 20px 30px 20px;
+        margin-bottom: 20px;
         .loader{
             display: flex;
             align-items: center;
@@ -98,6 +110,9 @@ export default {
         p {
             text-align: left;
         }
+        .empty-cart {
+            text-align: center;
+        }
         .tag {
             height: 30px;
             width: 30px;
@@ -115,7 +130,7 @@ export default {
             
             display: flex;
             align-items: flex-end;
-            margin-top: 100px;
+            margin-top: 70px;
             h2 {
                 margin: 0;
                 font-size: 1.5rem;
