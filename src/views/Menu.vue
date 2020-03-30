@@ -9,7 +9,7 @@
       <NavButton v-bind:showNav="navVisible" v-on:navOpen="openNav" class="nav-button" />
       <CartButton @click.native="toggleCart" class="cart-button" />
     </header>
-
+    <Account v-show="showLogin"/>
 
     <main class="main">
     <Cart v-if="cart" />
@@ -27,8 +27,9 @@ import NavButton from "@/components/NavButton";
 import Nav from "@/components/Nav";
 import CartButton from "@/components/CartButton";
 import Cart from "@/components/Cart";
-import LoadingScreen from "@/components/LoadingScreen.vue";
-import MenuList from "@/components/MenuList.vue";
+import LoadingScreen from "@/components/LoadingScreen";
+import MenuList from "@/components/MenuList";
+import Account from "@/components/Account"
 
 export default {
   components: {
@@ -37,12 +38,14 @@ export default {
     LoadingScreen,
     NavButton,
     Nav,
-    MenuList
+    MenuList,
+    Account
   },
   data: () => {
     return {
       cart: false,
       navVisible: true,
+      showLogin: true
     };
   },
 
