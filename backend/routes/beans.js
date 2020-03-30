@@ -20,14 +20,23 @@ router.post('/', async (req, res) => {
         orderNr: generateOrderNr(),
     }
 
-    db.get('orders') // Ska hämta orders efter uuid (key, se funktion nedan)
+    console.log(req.body.id)
+
+    // if(db.has(!req.body.id)) {
+    //     db.set(req.body.id, []) //Skapar en array med namn efter id om det inte redan finns
+    // }
+
+    db.get("orders") // Ska hämta orders efter uuid (key, se funktion nedan)
     .push({ 
+        user: req.body.id,
         orderNumber: order.orderNr, 
         timeStamp: Date.now(), 
-        Items: req.body.items, 
+        items: req.body.items, 
         totalValue: req.body.value
     })
     .write()
+
+    console.log(db.get(req.body.id).value())
     
     setTimeout(() => {
         res.send(order);
@@ -39,6 +48,17 @@ router.get('/key', (req, res) => {
         key: uuid()
     }
     res.send(JSON.stringify(key));
+})
+
+router.get('/profile/:id', (req, res) => {
+    let orders = 
+    db.get('orders')
+    .filter({ user: req.params.id })
+    .value()
+
+    console.log(orders)
+
+    res.send(orders);
 })
 
 module.exports = router

@@ -10,7 +10,9 @@ export default new Vuex.Store({
     menu: [],
     cart: [],
     order: {},
-    loading: true
+    loading: true,
+    user: { name: "FirstName LastName", mail: "example@example.com" },
+    orderHistory: []
   },
   getters: {
     totalPrice: (state) => {
@@ -51,6 +53,12 @@ export default new Vuex.Store({
     },
     emptyCart(state) {
       state.cart = []
+    },
+    saveUserId(state, id) {
+      state.user.id = id
+    },
+    setOrders(state, data) {
+      state.orderHistory = data
     }
 },
   actions: {
@@ -63,7 +71,7 @@ export default new Vuex.Store({
       return true
     },
     async placeOrder({commit, state, getters}) {
-      const data = await API.addOrder(state.cart, getters.totalPrice)
+      const data = await API.addOrder(state.cart, getters.totalPrice, state.user.id)
       commit('saveOrder', data)
       commit('emptyCart')
     },
@@ -83,6 +91,21 @@ export default new Vuex.Store({
         newItem.quantity = 1
         commit('addThisItem', newItem)
       }
+    },
+    async setId({commit}, id) {
+      if(!id) {
+      const data = await API.fetchId()
+      commit('saveUserId', data)
+      const parsed = JSON.stringify(data)
+      localStorage.setItem('id', parsed)
+      }
+      else {
+        commit('saveUserId', id)
+      }
+    },
+    async getOrders({commit}, id) {
+      const data = await API.fetchOrders(id)
+      commit('setOrders', data)
     }
   }
 })
