@@ -62,6 +62,7 @@ export default {
 
 <style lang="scss" scoped>
     .cart {
+        -webkit-tap-highlight-color: transparent;
         position: absolute;
         z-index: 99;
         width: 90%;
