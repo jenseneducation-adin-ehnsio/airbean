@@ -113,7 +113,7 @@ form {
         border: 1px solid #2F2926;
         border-radius: 6px;
         height: 48px;
-        width: 80vw;
+        width: 100%;
         padding: 20px;
         margin: 10px;
         font-family: 'Work Sans', sans-serif;
