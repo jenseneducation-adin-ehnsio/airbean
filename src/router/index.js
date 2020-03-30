@@ -8,6 +8,7 @@ import Profile from "@/views/OrderProfile.vue";
 Vue.use(VueRouter);
 
 const routes = [
+
   {
     path: "/",
     name: "Menu",
@@ -28,6 +29,7 @@ const routes = [
     name: "Profile",
     component: Profile
   }
+];
 ];
 
 const router = new VueRouter({
