@@ -45,7 +45,7 @@ export default {
     return {
       cart: false,
       navVisible: true,
-      showLogin: true
+      showLogin: false
     };
   },
 
