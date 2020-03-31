@@ -6,9 +6,14 @@
 
     <header>
       <img src="@/assets/graphics-header.svg" class="border-top" />
-      <NavButton v-bind:showNav="navVisible" v-on:navOpen="openNav" class="nav-button" />
+      <NavButton
+        v-bind:showNav="navVisible"
+        v-on:navOpen="openNav"
+        class="nav-button"
+      />
       <CartButton @click.native="toggleCart" class="cart-button" />
     </header>
+
      <Account v-show="showLogin"/>
 
     <main class="main">
@@ -45,6 +50,7 @@ export default {
     return {
       cart: false,
       navVisible: true
+
     };
   },
 

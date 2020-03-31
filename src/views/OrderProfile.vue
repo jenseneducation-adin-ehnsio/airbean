@@ -27,6 +27,7 @@
         <p class="price">{{ order.totalValue }}kr</p>
         <hr />
       </div>
+      <hr class="total-line" />
       <div class="wrapper-total">
         <p>
           <strong>Total spenderat</strong>
@@ -130,6 +131,7 @@ p:nth-child(4) {
   display: grid;
   grid-template-columns: 50% 50%;
 }
+
 .wrapper-total {
   display: flex;
   justify-content: space-between;
@@ -142,6 +144,10 @@ p:nth-child(4) {
   width: 200%;
   margin-top: 20px;
   opacity: 0.1;
+}
+.total-line {
+  margin-top: -10px;
+  margin-bottom: 20px;
 }
 .date,
 .price,
