@@ -3,36 +3,36 @@
     <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
     <header>
       <img src="../assets/graphics-header.svg" class="border-top" />
-      <NavButton class="navButton" v-bind:showNav="navVisible" v-on:navOpen="openNav" />
+      <NavButton
+        class="navButton"
+        v-bind:showNav="navVisible"
+        v-on:navOpen="openNav"
+      />
     </header>
     <div class="profile-info">
       <img src="@/assets/mask.svg" class="photo" />
-      <h1>{{user.name}}</h1>
-      <p>{{user.mail}}</p>
+      <h1>{{ user.name }}</h1>
+      <p>{{ user.mail }}</p>
     </div>
     <div class="order-history">
       <h1>Orderhistorik</h1>
-      <div class="item-history">
-        <p class="reference">#AB1123282323Z</p>
-        <p class="date">DD/MM/YY</p>
+      <div
+        class="item-history"
+        v-for="order in orderHistory"
+        :key="order.orderNr"
+      >
+        <p class="reference">{{ order.orderNumber }}</p>
+        <p class="date">{{ order.timeStamp | formatDate }}</p>
         <p class="total">total ordersumma</p>
-        <p class="price">XXXkr</p>
+        <p class="price">{{ order.totalValue }}kr</p>
         <hr />
       </div>
-      <div class="item-history">
-        <p class="reference">#AB1123282323Z</p>
-        <p class="date">DD/MM/YY</p>
-        <p class="total">total ordersumma</p>
-        <p class="price">XXXkr</p>
-        <hr />
-      </div>
-
       <div class="wrapper-total">
         <p>
           <strong>Total spenderat</strong>
         </p>
         <p class="amount">
-          <strong>XXXXkr</strong>
+          <strong>{{ totalSpent }}kr</strong>
         </p>
       </div>
     </div>
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+var moment = require("moment");
 import NavButton from "@/components/NavButton";
 import Nav from "@/components/Nav";
 export default {
@@ -59,18 +60,27 @@ export default {
   },
   computed: {
     user() {
-      return this.$store.state.user
+      return this.$store.state.user;
     },
     orderHistory() {
-      return this.$store.state.orderHistory
+      return this.$store.state.orderHistory;
+    },
+    totalSpent() {
+      return this.$store.getters.totalSpent;
+    }
+  },
+  filters: {
+    formatDate: function(value) {
+      if (value) {
+        return moment(value).format("DD/MM/YYYY");
+      }
     }
   },
   created() {
-    if(!this.user.id) {
-      this.$store.dispatch('setId')
-    }
-    else {
-      this.$store.dispatch('getOrders', this.user.id)
+    if (!this.user.id) {
+      this.$store.dispatch("setId");
+    } else {
+      this.$store.dispatch("getOrders", this.user.id);
     }
   }
 };
