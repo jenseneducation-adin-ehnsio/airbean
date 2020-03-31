@@ -13,7 +13,8 @@
       />
       <CartButton @click.native="toggleCart" class="cart-button" />
     </header>
-    <Account v-show="showLogin" />
+
+     <Account v-show="showLogin"/>
 
     <main class="main">
       <Cart v-if="cart" />
@@ -48,8 +49,8 @@ export default {
   data: () => {
     return {
       cart: false,
-      navVisible: true,
-      showLogin: false
+      navVisible: true
+
     };
   },
 
@@ -59,6 +60,9 @@ export default {
     },
     loading() {
       return this.$store.state.loading;
+    },
+    showLogin() {
+      return this.$store.state.showLogin
     }
   },
   methods: {

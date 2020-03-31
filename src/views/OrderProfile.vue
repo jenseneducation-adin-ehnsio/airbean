@@ -12,7 +12,7 @@
     <div class="profile-info">
       <img src="@/assets/mask.svg" class="photo" />
       <h1>{{ user.name }}</h1>
-      <p>{{ user.mail }}</p>
+      <p>{{ user.email }}</p>
     </div>
     <div class="order-history">
       <h1>Orderhistorik</h1>
