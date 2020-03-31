@@ -16,6 +16,14 @@ export default {
         localStorage.removeItem('id');
       }
     }
+    if(localStorage.getItem('user')) {
+      try {
+        let user = JSON.parse(localStorage.getItem('user'));
+        this.$store.dispatch('setUser', user)
+      } catch(e) {
+        localStorage.removeItem('user');
+      }
+    }
   }
 };
 </script>
