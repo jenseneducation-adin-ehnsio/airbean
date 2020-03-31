@@ -1,4 +1,5 @@
 <template>
+  <!-- Navigation meny med alla länkar -->
   <div class="nav" @click="emitVisible" :class="{ close: showNav }">
     <button>
       <img src="@/assets/close.svg" class="nav-button" />

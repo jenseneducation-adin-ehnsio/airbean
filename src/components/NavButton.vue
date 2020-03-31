@@ -1,5 +1,6 @@
 <template>
-  <button  @click="emitOpen">
+  <!-- Navigation button -->
+  <button @click="emitOpen">
     <img src="@/assets/navicon.svg" />
   </button>
 </template>

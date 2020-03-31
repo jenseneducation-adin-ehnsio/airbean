@@ -1,14 +1,17 @@
 <template>
   <div class="about">
+    <!--  Navigation meny med alla länkar -->
     <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
     <header>
       <img src="../assets/graphics-header.svg" class="border-top" />
+      <!--  Hamburger menu knapp att toggla navigation meny  -->
       <NavButton
         class="navButton"
         v-bind:showNav="navVisible"
         v-on:navOpen="openNav"
       />
     </header>
+    <!--  About info  -->
     <section class="info">
       <h1>Vårt kaffe</h1>
       <p>
