@@ -1,5 +1,5 @@
 <template>
-  <div class="menu" >
+  <div class="menu">
     <transition name="fade">
       <LoadingScreen v-if="loading" />
     </transition>
@@ -9,10 +9,10 @@
       <NavButton v-bind:showNav="navVisible" v-on:navOpen="openNav" class="nav-button" />
       <CartButton @click.native="toggleCart" class="cart-button" />
     </header>
-    <Account v-show="showLogin"/>
+    <!--  <Account v-show="showLogin"/> -->
 
     <main class="main">
-    <Cart v-if="cart" />
+      <Cart v-if="cart" />
       <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
       <MenuList />
     </main>
@@ -29,7 +29,7 @@ import CartButton from "@/components/CartButton";
 import Cart from "@/components/Cart";
 import LoadingScreen from "@/components/LoadingScreen";
 import MenuList from "@/components/MenuList";
-import Account from "@/components/Account"
+/* import Account from "@/components/Account" */
 
 export default {
   components: {
@@ -38,8 +38,8 @@ export default {
     LoadingScreen,
     NavButton,
     Nav,
-    MenuList,
-    Account
+    MenuList
+    /* Account */
   },
   data: () => {
     return {
@@ -60,7 +60,6 @@ export default {
   methods: {
     toggleCart() {
       this.cart = !this.cart;
-
     },
     closeNav() {
       this.navVisible = true;
@@ -109,7 +108,8 @@ footer {
 .fade-leave-active {
   opacity: 0;
 }
-.border-bottom, .border-top {
+.border-bottom,
+.border-top {
   z-index: 2;
   width: 100%;
 }
@@ -118,7 +118,8 @@ footer {
   position: absolute;
 }
 
-.cart-button, .nav-button {
+.cart-button,
+.nav-button {
   position: relative;
   z-index: 4;
 }

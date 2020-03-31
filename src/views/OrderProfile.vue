@@ -11,40 +11,40 @@
     </header>
     <div class="profile-info">
       <img src="@/assets/mask.svg" class="photo" />
-      <h1>{{user.name}}</h1>
-      <p>{{user.mail}}</p>
+      <h1>{{ user.name }}</h1>
+      <p>{{ user.mail }}</p>
     </div>
     <div class="order-history">
       <h1>Orderhistorik</h1>
-      <div class="item-history">
-        <p class="reference">#AB1123282323Z</p>
-        <p class="date">DD/MM/YY</p>
+      <div
+        class="item-history"
+        v-for="order in orderHistory"
+        :key="order.orderNr"
+      >
+        <p class="reference">{{ order.orderNumber }}</p>
+        <p class="date">{{ order.timeStamp | formatDate }}</p>
         <p class="total">total ordersumma</p>
-        <p class="price">XXXkr</p>
+        <p class="price">{{ order.totalValue }}kr</p>
         <hr />
       </div>
-      <div class="item-history">
-        <p class="reference">#AB1123282323Z</p>
-        <p class="date">DD/MM/YY</p>
-        <p class="total">total ordersumma</p>
-        <p class="price">XXXkr</p>
-        <hr />
-      </div>
-
       <div class="wrapper-total">
-        <p><strong>Total spenderat</strong></p>
-        <p class="amount"><strong>XXXXkr</strong></p>
+        <p>
+          <strong>Total spenderat</strong>
+        </p>
+        <p class="amount">
+          <strong>{{ totalSpent }}kr</strong>
+        </p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+var moment = require("moment");
 import NavButton from "@/components/NavButton";
 import Nav from "@/components/Nav";
 export default {
   components: { NavButton, Nav },
-
   data: () => {
     return {
       navVisible: true
@@ -60,18 +60,27 @@ export default {
   },
   computed: {
     user() {
-      return this.$store.state.user
+      return this.$store.state.user;
     },
     orderHistory() {
-      return this.$store.state.orderHistory
+      return this.$store.state.orderHistory;
+    },
+    totalSpent() {
+      return this.$store.getters.totalSpent;
+    }
+  },
+  filters: {
+    formatDate: function(value) {
+      if (value) {
+        return moment(value).format("DD/MM/YYYY");
+      }
     }
   },
   created() {
-    if(!this.user.id) {
-      this.$store.dispatch('setId')
-    }
-    else {
-      this.$store.dispatch('getOrders', this.user.id)
+    if (!this.user.id) {
+      this.$store.dispatch("setId");
+    } else {
+      this.$store.dispatch("getOrders", this.user.id);
     }
   }
 };
@@ -84,7 +93,6 @@ header {
   flex-direction: row;
   width: 100%;
 }
-
 .order-profile {
   background: $color-brown;
   color: white;
@@ -92,16 +100,13 @@ header {
   width: 100%;
   height: 100vh;
 }
-
 .navButton {
   position: fixed;
 }
-
 .border-top {
   width: 100%;
   position: absolute;
 }
-
 .photo {
   width: 30%;
   margin-top: 60px;
@@ -110,42 +115,34 @@ header {
   background: rgb(233, 210, 210);
   padding: 20px;
 }
-
 p {
   font-size: 1.2rem;
 }
-
 p:nth-child(3),
 p:nth-child(4) {
   opacity: 0.5;
 }
-
 .order-history {
   padding: 40px;
   text-align: left;
 }
-
 .item-history {
   display: grid;
   grid-template-columns: 50% 50%;
 }
-
 .wrapper-total {
   display: flex;
   justify-content: space-between;
 }
-
 .item-history > p,
 .wrapper-total > p {
   margin: 0;
 }
-
 .item-history > hr {
   width: 200%;
   margin-top: 20px;
   opacity: 0.1;
 }
-
 .date,
 .price,
 .amount {
