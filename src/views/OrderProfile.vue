@@ -1,8 +1,10 @@
 <template>
   <div class="order-profile">
+    <!--  Navigation meny med alla länkar -->
     <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
     <header>
       <img src="../assets/graphics-header.svg" class="border-top" />
+      <!--  Hamburger menu knapp att toggla navigation meny  -->
       <NavButton
         class="navButton"
         v-bind:showNav="navVisible"
@@ -11,11 +13,13 @@
     </header>
     <div class="profile-info">
       <img src="@/assets/mask.svg" class="photo" />
+      <!--  Här visas user namn och epost -->
       <h1>{{ user.name }}</h1>
       <p>{{ user.email }}</p>
     </div>
     <div class="order-history">
       <h1>Orderhistorik</h1>
+      <!--  Loopar över orderar i orderHistory arrayen och visas  -->
       <div
         class="item-history"
         v-for="order in orderHistory"
@@ -33,6 +37,7 @@
           <strong>Total spenderat</strong>
         </p>
         <p class="amount">
+          <!--  Loopar över totalValue och visar totalsumman  -->
           <strong>{{ totalSpent }}kr</strong>
         </p>
       </div>
