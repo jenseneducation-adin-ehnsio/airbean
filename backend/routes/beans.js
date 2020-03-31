@@ -19,29 +19,27 @@ router.post("/", async (req, res) => {
     orderNr: generateOrderNr()
   };
 
+  console.log(req.body.id);
 
-    console.log(req.body.id)
+  // if(db.has(!req.body.id)) {
+  //     db.set(req.body.id, []) //Skapar en array med namn efter id om det inte redan finns
+  // }
 
-    // if(db.has(!req.body.id)) {
-    //     db.set(req.body.id, []) //Skapar en array med namn efter id om det inte redan finns
-    // }
-
-    db.get("orders") // Ska hämta orders efter uuid (key, se funktion nedan)
-    .push({ 
-        user: req.body.id,
-        orderNumber: order.orderNr, 
-        timeStamp: Date.now(), 
-        items: req.body.items, 
-        totalValue: req.body.value
+  db.get("orders") // Ska hämta orders efter uuid (key, se funktion nedan)
+    .push({
+      user: req.body.id,
+      orderNumber: order.orderNr,
+      timeStamp: Date.now(),
+      items: req.body.items,
+      totalValue: req.body.value
     })
-    .write()
+    .write();
 
-    console.log(db.get(req.body.id).value())
-    
-    setTimeout(() => {
-        res.send(order);
-    }, 2000);
+  console.log(db.get(req.body.id).value());
 
+  setTimeout(() => {
+    res.send(order);
+  }, 2000);
 });
 
 router.get("/key", (req, res) => {
@@ -51,16 +49,15 @@ router.get("/key", (req, res) => {
   res.send(JSON.stringify(key));
 });
 
-
-router.get('/profile/:id', (req, res) => {
-    let orders = 
-    db.get('orders')
+router.get("/profile/:id", (req, res) => {
+  let orders = db
+    .get("orders")
     .filter({ user: req.params.id })
-    .value()
+    .value();
 
-    console.log(orders)
+  console.log(orders);
 
-    res.send(orders);
-})
+  res.send(orders);
+});
 
-module.exports = router
+module.exports = router;
