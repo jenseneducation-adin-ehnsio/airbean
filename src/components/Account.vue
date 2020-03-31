@@ -3,32 +3,67 @@
       <img src="@/assets/airbean-landing-black.svg" class="logo" height="60px" />
       <h1>Välkommen till AirBean-familjen!</h1>
       <p>Genom att skapa ett konto nedan kan du spara och se din orderhistorik</p>
-      <form action="post">
+      <div class="form">
         <label for="name">Namn</label>
-        <input type="text" name="fname" id="fname" placeholder="Namn..">
+        <input type="text" 
+        name="name" 
+        id="name" 
+        placeholder="Namn.." 
+        v-model="user.name">
         <label for="email">Epost</label>
-        <input type="text" name="email" id="email" placeholder="din@epost.com">
+        <input type="text" 
+        name="email" 
+        id="email" 
+        placeholder="din@epost.com"
+        v-model="user.email">
         <p> GDPR Ok!</p>
         <div class="round">
 
-            <input type="checkbox" name="gdpr" id="checkbox">
+            <input type="checkbox" name="gdpr" id="checkbox" v-model="gdpr">
             <label for="checkbox"></label>
         </div>
-        <button>Brew me a cup!</button>
-      </form>
+        <p v-show="showFailMsg" class="center">Please check all input fields and GDPR to proceed, dear.</p>
+        <button @click="saveUser">Brew me a cup!</button>
+        <p class="center" @click="placeOrder">Skip</p>
+      </div>
   </div>
 </template>
 
 <script>
 export default {
-
+    data(){return{
+        user: {
+            name: "",
+            email: ""
+        },
+        gdpr: false,
+        showFailMsg: false
+    }},
+    methods: {
+        async placeOrder() {
+                this.$store.state.loadingOrder = true
+                this.$store.state.showLogin = false
+                await this.$store.dispatch('setId')
+                await this.$store.dispatch('placeOrder')
+                this.$store.state.loadingOrder = false
+                this.$router.push('/order')
+        },
+        saveUser() {
+            if(this.gdpr && this.user.name.length > 1 && this.user.email.length > 1){
+                this.$store.dispatch('setUser', this.user)
+                this.placeOrder()
+            }else{
+                this.showFailMsg = true
+            }
+        }
+    }
 }
 </script>
 
 <style lang="scss" scoped>
 .account {
     position: absolute;
-    z-index: 99;
+    z-index: 999;
     width: 90%;
     min-height: 300px;
     top: 110px;
@@ -94,10 +129,7 @@ export default {
     }
 }
 
-
-
-
-form {
+.form {
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -123,6 +155,13 @@ form {
         font-size: 0.6rem;
         align-self: flex-start;
     }
+    .center {
+    margin-top: 20px;
+    margin-left: auto;
+    &:hover {
+        cursor: pointer;
+    }
+}
 }
 button {
     font-family: 'PT Serif';

@@ -10,8 +10,10 @@ export default new Vuex.Store({
     cart: [],
     order: {},
     loading: true,
-    user: { name: "FirstName LastName", mail: "example@example.com" },
-    orderHistory: []
+    user: { name: "FirstName LastName", email: "example@example.com" },
+    orderHistory: [],
+    showLogin: false,
+    loadingOrder: false
   },
   getters: {
     totalPrice: state => {
@@ -66,6 +68,10 @@ export default new Vuex.Store({
     },
     setOrders(state, data) {
       state.orderHistory = data;
+    },
+    setThisUser(state, user) {
+      state.user.name = user.name
+      state.user.email = user.email
     }
   },
   actions: {
@@ -116,6 +122,11 @@ export default new Vuex.Store({
     async getOrders({ commit }, id) {
       const data = await API.fetchOrders(id);
       commit("setOrders", data);
+    },
+    setUser({ commit }, user) {
+      commit("setThisUser", user)
+      const parsedUser = JSON.stringify(user)
+      localStorage.setItem("user", parsedUser)
     }
   }
 });
