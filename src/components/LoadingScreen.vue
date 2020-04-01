@@ -1,4 +1,5 @@
 <template>
+  <!-- Appens först sida -->
   <div class="loading-page">
     <img src="@/assets/intro-graphic-left.svg" class="border-left" />
     <img src="@/assets/airbean-landing.svg" class="logo" />

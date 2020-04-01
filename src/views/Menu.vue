@@ -1,19 +1,32 @@
 <template>
   <div class="menu">
+    <!-- Loading screen som visas i 2sec -->
     <transition name="fade">
       <LoadingScreen v-if="loading" />
     </transition>
 
     <header>
       <img src="@/assets/graphics-header.svg" class="border-top" />
-      <NavButton v-bind:showNav="navVisible" v-on:navOpen="openNav" class="nav-button" />
+      <!--  Hamburger menu knapp att toggla navigation meny   -->
+      <NavButton
+        v-bind:showNav="navVisible"
+        v-on:navOpen="openNav"
+        class="nav-button"
+      />
+      <!--  Shopping cart knapp att toggla cart  -->
       <CartButton @click.native="toggleCart" class="cart-button" />
     </header>
-     <Account v-show="showLogin"/>
+
+    <!--  Login sidan som visas när man har inte loggat in innan man skickar ordern -->
+    <Account v-show="showLogin" />
+
 
     <main class="main">
+      <!--  Shopping cart som visar orderar innan det skickas in  -->
       <Cart v-if="cart" />
+      <!--  Navigation meny med alla länkar -->
       <Nav v-bind:showNav="navVisible" v-on:navClose="closeNav" />
+      <!--  Meny list -->
       <MenuList />
     </main>
     <footer>
@@ -44,8 +57,7 @@ export default {
   data: () => {
     return {
       cart: false,
-      navVisible: true,
-      showLogin: true
+      navVisible: true
     };
   },
 
@@ -55,6 +67,9 @@ export default {
     },
     loading() {
       return this.$store.state.loading;
+    },
+    showLogin() {
+      return this.$store.state.showLogin;
     }
   },
   methods: {
@@ -88,13 +103,13 @@ export default {
 header {
   display: flex;
   width: 100%;
-  height: 120px;
+  height: 100px;
   flex-direction: row;
 }
 footer {
   margin-top: auto;
   display: flex;
-  height: 120px;
+  height: 100px;
   width: 100%;
   max-width: 500px;
   bottom: 0;
@@ -118,13 +133,16 @@ footer {
   position: absolute;
 }
 
-.cart-button,
-.nav-button {
-  position: relative;
+.cart-button {
+  position: absolute;
   z-index: 4;
+  top: 25px;
+  right: 25px;
 }
 .nav-button {
   position: fixed;
   z-index: 4;
+  top: 25px;
+  left: 25px;
 }
 </style>

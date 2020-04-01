@@ -1,5 +1,6 @@
 <template>
   <div class="order">
+    <!--   Om det finns eta, visar ordernummeret och eta att bekräfta ordern-->
     <div v-if="order.eta" class="order-wrapper">
       <h4>
         Ordernummer
@@ -15,11 +16,13 @@
         <strong>{{ order.eta }}</strong> minuter
       </p>
     </div>
+    <!--   Om det finns ingen order, visar meddelandet -->
     <div v-else class="no-order">
       <h2>Du har ingen beställning</h2>
       <p>Besök din profil för att se tidigare ordrar</p>
     </div>
-    <router-link to="/">
+    <router-link to="/menu">
+      <!--   Button att länkar tillbaka till menu sidan -->
       <button class="okCool">Ok, cool!</button>
     </router-link>
   </div>

@@ -14,18 +14,13 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+  //Post order och få tillbacka ETA och ordernummer
   const order = {
     eta: generateETA(),
     orderNr: generateOrderNr()
   };
-
-  console.log(req.body.id);
-
-  // if(db.has(!req.body.id)) {
-  //     db.set(req.body.id, []) //Skapar en array med namn efter id om det inte redan finns
-  // }
-
-  db.get("orders") // Ska hämta orders efter uuid (key, se funktion nedan)
+  // Lägg till orderar i db.json
+  db.get("orders")
     .push({
       user: req.body.id,
       orderNumber: order.orderNr,
@@ -34,29 +29,25 @@ router.post("/", async (req, res) => {
       totalValue: req.body.value
     })
     .write();
-
-  console.log(db.get(req.body.id).value());
-
   setTimeout(() => {
     res.send(order);
   }, 2000);
 });
 
 router.get("/key", (req, res) => {
+  // Generera uuid
   const key = {
     key: uuid()
   };
   res.send(JSON.stringify(key));
 });
 
+// Hämta ordrar via user id
 router.get("/profile/:id", (req, res) => {
   let orders = db
     .get("orders")
     .filter({ user: req.params.id })
     .value();
-
-  console.log(orders);
-
   res.send(orders);
 });
 
