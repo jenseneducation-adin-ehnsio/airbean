@@ -16,8 +16,10 @@
       <!--  Shopping cart knapp att toggla cart  -->
       <CartButton @click.native="toggleCart" class="cart-button" />
     </header>
+
     <!--  Login sidan som visas när man har inte loggat in innan man skickar ordern -->
     <Account v-show="showLogin" />
+
 
     <main class="main">
       <!--  Shopping cart som visar orderar innan det skickas in  -->
