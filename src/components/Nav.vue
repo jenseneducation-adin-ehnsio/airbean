@@ -4,7 +4,7 @@
     <button>
       <img src="@/assets/close.svg" class="nav-button" />
     </button>
-    <router-link to="/" class="link">Meny</router-link>
+    <router-link to="/menu" class="link">Meny</router-link>
     <hr />
     <router-link to="/about" class="link">Vårt kaffe</router-link>
     <hr />
@@ -64,8 +64,8 @@ hr {
 }
 
 button {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border: none;
   border-radius: 50%;
   margin-bottom: 100px;

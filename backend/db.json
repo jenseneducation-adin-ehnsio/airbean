@@ -1,41 +1,5 @@
 {
   "orders": [
-    {
-      "user": "a1dadf96-44a5-40de-aae3-26c434a4a353",
-      "orderNumber": "AB1585662534609Y",
-      "timeStamp": 1585662534610,
-      "items": [
-        {
-          "id": 1,
-          "title": "Bryggkaffe",
-          "desc": "Bryggd på månadens bönor.",
-          "price": 39,
-          "quantity": 1
-        },
-        {
-          "id": 2,
-          "title": "Caffè Doppio",
-          "desc": "Bryggd på månadens bönor.",
-          "price": 49,
-          "quantity": 1
-        }
-      ],
-      "totalValue": 88
-    },
-    {
-      "user": "18ba0091-29cd-4a60-ac14-da7cfbb4eadf",
-      "orderNumber": "AB1585662806916Y",
-      "timeStamp": 1585662806917,
-      "items": [
-        {
-          "id": 1,
-          "title": "Bryggkaffe",
-          "desc": "Bryggd på månadens bönor.",
-          "price": 39,
-          "quantity": 1
-        }
-      ],
-      "totalValue": 39
-    }
+    
   ]
 }

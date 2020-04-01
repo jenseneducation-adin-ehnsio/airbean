@@ -16,7 +16,11 @@
       <!--  Här visas user namn och epost -->
       <h1>{{ user.name }}</h1>
       <p>{{ user.email }}</p>
+      <h1 v-show="!user.name">Inloggad som gäst</h1>
+      <p v-show="!user.name" @click="createProfile">Skapa profil</p>
     </div>
+    <!-- Create account -->
+    <Account v-show="showLogin" />
     <div class="order-history">
       <h1>Orderhistorik</h1>
       <!--  Loopar över orderar i orderHistory arrayen och visas  -->
@@ -49,8 +53,9 @@
 var moment = require("moment");
 import NavButton from "@/components/NavButton";
 import Nav from "@/components/Nav";
+import Account from "@/components/Account"
 export default {
-  components: { NavButton, Nav },
+  components: { NavButton, Nav, Account },
   data: () => {
     return {
       navVisible: true
@@ -62,6 +67,9 @@ export default {
     },
     openNav() {
       this.navVisible = false;
+    },
+    createProfile() {
+      this.$store.dispatch("toggleLogin")
     }
   },
   computed: {
@@ -73,6 +81,9 @@ export default {
     },
     totalSpent() {
       return this.$store.getters.totalSpent;
+    },
+    showLogin() {
+      return this.$store.state.showLogin
     }
   },
   filters: {
