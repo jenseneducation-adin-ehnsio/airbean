@@ -16,8 +16,10 @@
       <!--  Shopping cart knapp att toggla cart  -->
       <CartButton @click.native="toggleCart" class="cart-button" />
     </header>
+
     <!--  Login sidan som visas när man har inte loggat in innan man skickar ordern -->
     <Account v-show="showLogin" />
+
 
     <main class="main">
       <!--  Shopping cart som visar orderar innan det skickas in  -->
@@ -101,13 +103,13 @@ export default {
 header {
   display: flex;
   width: 100%;
-  height: 120px;
+  height: 100px;
   flex-direction: row;
 }
 footer {
   margin-top: auto;
   display: flex;
-  height: 120px;
+  height: 100px;
   width: 100%;
   max-width: 500px;
   bottom: 0;
@@ -131,13 +133,16 @@ footer {
   position: absolute;
 }
 
-.cart-button,
-.nav-button {
-  position: relative;
+.cart-button {
+  position: absolute;
   z-index: 4;
+  top: 25px;
+  right: 25px;
 }
 .nav-button {
   position: fixed;
   z-index: 4;
+  top: 25px;
+  left: 25px;
 }
 </style>

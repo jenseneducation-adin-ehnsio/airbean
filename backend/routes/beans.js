@@ -19,9 +19,6 @@ router.post("/", async (req, res) => {
     eta: generateETA(),
     orderNr: generateOrderNr()
   };
-
-  console.log(req.body.id);
-
   // Lägg till orderar i db.json
   db.get("orders")
     .push({
@@ -32,9 +29,6 @@ router.post("/", async (req, res) => {
       totalValue: req.body.value
     })
     .write();
-
-  console.log(db.get(req.body.id).value());
-
   setTimeout(() => {
     res.send(order);
   }, 2000);
@@ -54,9 +48,6 @@ router.get("/profile/:id", (req, res) => {
     .get("orders")
     .filter({ user: req.params.id })
     .value();
-
-  console.log(orders);
-
   res.send(orders);
 });
 

@@ -1,7 +1,7 @@
 <template>
   <!-- Navigation button -->
   <button @click="emitOpen">
-    <img src="@/assets/navicon.svg" />
+    <img src="@/assets/navicon.svg" height="14px" />
   </button>
 </template>
 
@@ -21,11 +21,11 @@ export default {
 
 <style scoped>
 button {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border: none;
   border-radius: 50%;
-  margin: 25px auto 0 25px;
+  /* margin: 25px auto 0 25px; */
   background-color: white;
 }
 </style>

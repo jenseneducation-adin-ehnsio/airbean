@@ -23,9 +23,9 @@ button {
   cursor: pointer;
   position: relative;
   border-radius: 50%;
-  height: 80px;
-  width: 80px;
-  margin: 25px 25px 0 auto;
+  height: 60px;
+  width: 60px;
+  // margin: 25px 25px 0 auto;
   border: none;
   background: $color-brown;
   &:focus {
@@ -35,8 +35,8 @@ button {
     height: 40%;
   }
   .counter {
-    height: 30px;
-    width: 30px;
+    height: 24px;
+    width: 24px;
     color: white;
     background-color: $color-orange;
     border-radius: 50%;

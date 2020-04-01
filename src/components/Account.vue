@@ -33,7 +33,7 @@
       <!--   Dispatcha user infon, id:et och ordern till store när man lägger in beställningen -->
       <button @click="saveUser">Brew me a cup!</button>
       <!--   Dispatcha user id och ordern till store när man lägger in beställningen -->
-      <p class="center" @click="placeOrder">Skip</p>
+      <p class="center" @click="skip()">Skip</p>
     </div>
   </div>
 </template>
@@ -51,14 +51,6 @@ export default {
     };
   },
   methods: {
-    async placeOrder() {
-      this.$store.state.loadingOrder = true;
-      this.$store.state.showLogin = false;
-      await this.$store.dispatch("setId");
-      await this.$store.dispatch("placeOrder");
-      this.$store.state.loadingOrder = false;
-      this.$router.push("/order");
-    },
     saveUser() {
       if (
         this.gdpr &&
@@ -66,10 +58,14 @@ export default {
         this.user.email.length > 1
       ) {
         this.$store.dispatch("setUser", this.user);
-        this.placeOrder();
+        this.$store.dispatch("toggleLogin")
       } else {
         this.showFailMsg = true;
       }
+    },
+    skip() {
+      this.$store.dispatch("toggleLogin")
+      this.$store.dispatch("skipLogin")
     }
   }
 };

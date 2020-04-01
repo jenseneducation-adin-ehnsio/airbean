@@ -104,6 +104,8 @@ footer {
 
 .navButton {
   position: fixed;
+  left: 25px;
+  top: 25px;
 }
 h1 {
   font-size: 3rem;

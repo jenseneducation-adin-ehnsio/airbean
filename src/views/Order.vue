@@ -21,7 +21,7 @@
       <h2>Du har ingen beställning</h2>
       <p>Besök din profil för att se tidigare ordrar</p>
     </div>
-    <router-link to="/">
+    <router-link to="/menu">
       <!--   Button att länkar tillbaka till menu sidan -->
       <button class="okCool">Ok, cool!</button>
     </router-link>
