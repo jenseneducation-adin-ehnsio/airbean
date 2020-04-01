@@ -119,6 +119,8 @@ header {
 }
 .navButton {
   position: fixed;
+  top: 25px;
+  left: 25px;
 }
 .border-top {
   width: 100%;
