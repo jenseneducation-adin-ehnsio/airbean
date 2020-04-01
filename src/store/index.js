@@ -10,7 +10,8 @@ export default new Vuex.Store({
     cart: [],
     order: {},
     loading: true,
-    user: { name: "FirstName LastName", email: "example@example.com" },
+    user: { name: "", email: "" },
+    userSkip: false,
     orderHistory: [],
     showLogin: false,
     loadingOrder: false
@@ -86,6 +87,12 @@ export default new Vuex.Store({
     setThisUser(state, user) {
       state.user.name = user.name;
       state.user.email = user.email;
+    },
+    toggleThisLogin(state) {
+      state.showLogin = !state.showLogin
+    },
+    skipThisLogin(state) {
+      state.userSkip = true
     }
   },
   actions: {
@@ -126,6 +133,13 @@ export default new Vuex.Store({
         commit("addThisItem", newItem);
       }
     },
+    toggleLogin({ commit }) {
+      commit("toggleThisLogin")
+    },
+    skipLogin({ commit }) {
+      commit("skipThisLogin")
+    },
+
 
     /*  Kommitta mutation av item id i datan och i local storage om det finns inte */
     async setId({ commit }, id) {

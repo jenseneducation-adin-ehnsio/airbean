@@ -5,9 +5,9 @@
       <img src="@/assets/loader.png" alt="" />
       <p>Jobbar på din order..</p>
     </div>
+      <div class="tag"></div>
     <div class="cart">
       <!--    Shopping cart med items som user lägger till. Loppar ut arrayen när det blir fler items -->
-      <div class="tag"></div>
       <h1>Din beställning</h1>
       <div v-for="item in cart" :key="item.id" class="cart-items">
         <CartItem :item="item" />
@@ -49,16 +49,22 @@ export default {
     totalPrice() {
       return this.$store.getters.totalPrice;
     },
-    userId() {
-      return this.$store.state.user.id;
+    user() {
+      return this.$store.state.user;
     },
     loadingOrder() {
       return this.$store.state.loadingOrder;
+    },
+    userSkip() {
+      return this.$store.state.userSkip
     }
   },
   methods: {
     async placeOrder() {
       this.$store.state.loadingOrder = true;
+      if(!this.user.id) {
+        await this.$store.dispatch("setId")
+      }
       await this.$store.dispatch("placeOrder");
       this.$store.state.loadingOrder = false;
       this.$router.push("/order");
@@ -66,8 +72,10 @@ export default {
     tryPlaceOrder() {
       if (this.cart.length < 1) {
         this.emptyCart();
-      } else if (!this.userId) {
-        this.$store.state.showLogin = true;
+      } else if (this.userSkip) {
+        this.placeOrder();
+      } else if (!this.user.name) {
+        this.$store.dispatch("toggleLogin")
       } else {
         this.placeOrder();
       }
@@ -108,10 +116,11 @@ export default {
 .cart {
   -webkit-tap-highlight-color: transparent;
   position: absolute;
-  z-index: 887;
+  z-index: 886;
   width: 90%;
   min-height: 300px;
-  top: 110px;
+  max-height: 80vh;
+  top: 95px;
   left: 50%;
   transform: translate(-50%, 0);
   background-color: #fff;
@@ -119,7 +128,7 @@ export default {
   padding: 1px 20px 30px 20px;
   margin-bottom: 20px;
   box-shadow: 0 0 0 1000px #00000070;
-
+  overflow: scroll;
   button {
     margin: 50px auto 0 auto;
     font-size: 1.4rem;
@@ -138,15 +147,7 @@ export default {
   .empty-cart {
     text-align: center;
   }
-  .tag {
-    height: 30px;
-    width: 30px;
-    background-color: inherit;
-    position: absolute;
-    right: 30px;
-    top: -8px;
-    transform: rotate(45deg);
-  }
+  
   h1 {
     margin-top: 50px;
     font-size: 2rem;
@@ -169,4 +170,15 @@ export default {
     }
   }
 }
+  .tag {
+    height: 30px;
+    width: 30px;
+    background-color: white;
+    position: absolute;
+    right: 40px;
+    top: 85px;
+    transform: rotate(45deg);
+    z-index: 887;
+    border-radius: 3px;
+  }
 </style>
