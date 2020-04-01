@@ -1,55 +1,5 @@
 {
   "orders": [
-    {
-      "user": "60a02601-11c2-4615-8b82-a6dcf5d01847",
-      "orderNumber": "AB1585640474683X",
-      "timeStamp": 1585640474684,
-      "items": [
-        {
-          "id": 1,
-          "title": "Bryggkaffe",
-          "desc": "Bryggd på månadens bönor.",
-          "price": 39,
-          "quantity": 1
-        }
-      ],
-      "totalValue": 39
-    },
-    {
-      "user": "60a02601-11c2-4615-8b82-a6dcf5d01847",
-      "orderNumber": "AB1585640569177X",
-      "timeStamp": 1585640569179,
-      "items": [
-        {
-          "id": 6,
-          "title": "Cortado",
-          "desc": "Bryggd på månadens bönor.",
-          "price": 39,
-          "quantity": 5
-        }
-      ],
-      "totalValue": 195
-    },
-    {
-      "user": "3b13747a-e12c-433f-a596-6ce72c26a968",
-      "orderNumber": "AB1585640927277X",
-      "timeStamp": 1585640927281,
-      "items": [
-        {
-          "id": 4,
-          "title": "Latte Macchiato",
-          "desc": "Bryggd på månadens bönor.",
-          "price": 49,
-          "quantity": 1
-        },
-        {
-          "id": 5,
-          "title": "Kaffe Latte",
-          "desc": "Bryggd på månadens bönor.",
-          "price": 54,
-          "quantity": 1
-        }
-      ],
-    }
+    
   ]
 }
